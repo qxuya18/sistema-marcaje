@@ -1,0 +1,41 @@
+Vamos a utiliar diversos componentes para poder Crear el proyecto
+la Version a utilizar de php es la 
+con laravel 12 o 13
+
+DOCUMENTACION OFICIAL PARA INSTALACION DE LARAVEL 
+https://laravel.com/framework/docs
+
+  -PHP
+  -COMPOSER
+  -POSTGRESQL
+  -NODE
+  -NPM
+
+Valdar si tienes estos componentes, en este caso uso Arch Linux
+
+  php -v 
+  composer --version
+  psql --version
+  node -v
+  npm -v  
+
+INSTALAR PHP 
+  sudo pacman -S php composer php-pgsql
+
+VALIDAR QUE LOS MODULOS RELACIONADOS CON POSTGRESQL ESTAN CARGADOS
+  php -m | grep -Ei 'PDO|pgsql' este tendria que devolvernos
+    PDO
+    pdo_pgsql
+    pgsql
+
+SI SOLO DEVUELVE PDO hay que cargar los modulos 
+  nvim /etc/php/php.ini en esta ruta se encuentran los modulos
+
+ grep -nE '^[; ]*extension\s*=\s*(pdo_pgsql|pgsql)' /etc/php/php.ini
+932:;extension=pdo_pgsql
+934:;extension=pgsql
+
+validamos que los 2 restantes estan en la linea 932 y 934, hay que eliminar el punto y coma ; lueugo validar
+
+INSTALAR DEPENDENCIAS DE PHP 
+
